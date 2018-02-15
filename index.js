@@ -17,13 +17,13 @@ inquirer
         message: "Do you want to play?",
         choices: ["Yes", "No"],
         }
-    ]).then(function(){
-        if (choices === "Yes") {
-            startGame();
-        }
-        else {
-            console.log("Bye!")
-        }
+    ]).then(function(answer){
+       if (answer.start === "Yes") {
+           startGame();
+       }
+       else {
+           console.log("Bye!")
+       }
     
     });
 
@@ -35,5 +35,7 @@ inquirer
                     type: "input",
                     message: "Choose a letter",
                 }
-            ]).then(guessedLetters.push(chosenLetter))
+            ]).then(function(answer){
+                guessedLetters.push(answer.chosenLetter)
+            })
     }
