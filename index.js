@@ -1,10 +1,12 @@
 var Word = require("/Word.js");
 var inquirer = require("inquirer"); 
 
+var random = Words[Math.floor(Math.random() * Words.length)];
+
 var hangman = {
-    guessesRemaining: 10,
+    wordToGuess: random,
+    guessesRemaining: random.length,
     guessedLetters: [],
-    
 };
 
 inquirer
@@ -29,10 +31,9 @@ inquirer
         inquirer
             prompt.apply([
                 {
-                    name: "Choose",
+                    name: "chosenLetter",
                     type: "input",
                     message: "Choose a letter",
-
                 }
-            ])
+            ]).then(guessedLetters.push(chosenLetter))
     }
